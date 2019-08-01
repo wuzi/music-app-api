@@ -7,8 +7,7 @@
     "build": "tsc",
     "start": "tsc && npm run serve",
     "serve": "node dist/index.js",
-    "watch-serve": "nodemon dist/index.js",
-    "watch-build": "tsc -w"
+    "watch": "nodemon dist/index.js"
   },
   "dependencies": {
     "@types/koa": "^2.0.49",
