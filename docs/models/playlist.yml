@@ -1,0 +1,20 @@
+definitions:
+  Playlist:
+    type: object
+    properties:
+      title:
+        type: string
+        example: 'Melhores do Rock'
+        description: 'Title of the playlist'
+      description:
+        type: string
+        example: 'As melhores músicas de rock em uma única playlist'
+        description: 'Description of the playlist'
+      thumbnail:
+        type: string
+        example: 'https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg'
+        description: 'Thumbnail of the playlist'
+    required:
+      - title
+      - description
+      - thumbnail
