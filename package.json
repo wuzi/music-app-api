@@ -1,0 +1,22 @@
+{
+  "name": "music-app-api",
+  "version": "0.1.0",
+  "description": "A simple API for a music app",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && npm run serve",
+    "serve": "node dist/index.js",
+    "watch-serve": "nodemon dist/index.js",
+    "watch-build": "tsc -w"
+  },
+  "dependencies": {
+    "@types/koa": "^2.0.49",
+    "@types/koa-router": "^7.0.42",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

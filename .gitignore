@@ -1,0 +1,11 @@
+# node modules
+node_modules
+
+# compiled files
+dist/
+
+# log files
+logs/
+
+# environment variables, never commit this file
+.env
