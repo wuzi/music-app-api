@@ -1,9 +1,10 @@
-import Router from 'koa-router';
-const router = new Router();
+import Koa from 'koa';
+import general from './general';
+import playlist from './playlist';
 
-import swagger from '../controllers/swagger';
-router.get('/swagger.json', ctx => ctx.body = swagger);
+const routeLoader = (app: Koa<any, {}>) => {
+  app.use(general.routes());
+  app.use(playlist.routes());
+};
 
-router.get('/', ctx => ctx.body = 'API Online' );
-
-export default router;
+export default routeLoader;

@@ -1,0 +1,15 @@
+/playlists:
+  get:
+    tags:
+      - Playlist
+    summary: Show a list of all playlists
+    description: Show a list of all playlists
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Return an array with all playlists
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Playlist'
