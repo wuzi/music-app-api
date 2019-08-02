@@ -45,6 +45,8 @@ class PlaylistController {
 
     const playlist = new Playlist(ctx.request.body);
     await playlist.save();
+
+    ctx.status = 201;
     ctx.body = playlist;
   };
 }
