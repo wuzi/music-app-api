@@ -1,4 +1,5 @@
 import { BaseContext } from 'koa';
+import { validateAll } from 'indicative/validator';
 import Playlist from '../models/playlist';
 
 /**
@@ -23,6 +24,25 @@ class PlaylistController {
    * @param {BaseContext} ctx Koa Context
    */
   static async store(ctx: BaseContext) {
+    try {
+      const rules = {
+        title: 'required',
+        description: 'required',
+        thumbnail: 'required',
+      };
+
+      const messages = {
+        required: (field: string) => `${field} é obrigatório`,
+      };
+
+      await validateAll(ctx.request.body, rules, messages);
+    }
+    catch (err) {
+      ctx.status = 400;
+      ctx.body = err;
+      return;
+    }
+
     const playlist = new Playlist(ctx.request.body);
     await playlist.save();
     ctx.body = playlist;
