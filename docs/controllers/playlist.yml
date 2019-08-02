@@ -13,3 +13,37 @@
           type: array
           items:
             $ref: '#/definitions/Playlist'
+  post:
+    tags:
+      - Playlist
+    summary: Create/save a new playlist
+    description: Create/save a new playlist
+    produces:
+      - application/json
+    parameters:
+      - name: title
+        description: Title of the playlist
+        in: formData
+        required: true
+        type: string
+      - name: description
+        description: Description of the playlist
+        in: formData
+        required: true
+        type: string
+      - name: thumbnail
+        description: Thumbnail of the playlist
+        in: formData
+        required: true
+        type: string
+    responses:
+      201:
+        description: Playlist created
+        schema:
+          $ref: '#/definitions/Playlist'
+      400:
+        description: Invalid properties
+      401:
+        description: Not authenticated
+      403:
+        description: Not authorized

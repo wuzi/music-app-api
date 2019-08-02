@@ -10,4 +10,10 @@ router.prefix('/v1/playlists');
  */
 router.get('/', PlaylistController.index);
 
+/**
+ * Create/save a new playlist.
+ * POST v1/playlists
+ */
+router.post('/', PlaylistController.store);
+
 export default router;
