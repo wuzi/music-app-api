@@ -14,6 +14,10 @@ definitions:
         type: string
         example: 'https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg'
         description: 'Thumbnail of the playlist'
+      songs:
+        type: array
+        items:
+          $ref: '#/definitions/Song'
     required:
       - title
       - description

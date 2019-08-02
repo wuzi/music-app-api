@@ -1,0 +1,35 @@
+definitions:
+  Song:
+    type: object
+    properties:
+      name:
+        type: string
+        example: 'Numb'
+        description: 'Name of the song'
+      author:
+        type: string
+        example: 'Linkin Park'
+        description: 'Name of the author of the song'
+      thumbnail:
+        type: string
+        example: 'https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg'
+        description: 'Thumbnail of the song'
+      album:
+        type: string
+        example: 'Hybrid Theory'
+        description: 'Album of the song'
+      file:
+        type: string
+        example: 'https://s3-sa-east-1.amazonaws.com/gonative/1.mp3'
+        description: 'URL of the file of the song'
+      genre:
+        type: string
+        example: 'Rock'
+        description: 'Genre of the song'
+    required:
+      - name
+      - author
+      - thumbnail
+      - album
+      - file
+      - genre

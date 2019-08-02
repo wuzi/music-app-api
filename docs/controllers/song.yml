@@ -1,0 +1,70 @@
+/songs:
+  get:
+    tags:
+      - Song
+    summary: Show a list of all songs
+    description: Show a list of all songs
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Return an array with all songs
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Song'
+  post:
+    tags:
+      - Song
+    summary: Create/save a new song
+    description: Create/save a new song
+    produces:
+      - application/json
+    parameters:
+      - name: name
+        type: string
+        example: 'Numb'
+        description: 'Name of the song'
+        in: formData
+        required: true
+      - name: author
+        type: string
+        example: 'Linkin Park'
+        description: 'Name of the author of the song'
+        in: formData
+        required: true
+      - name: thumbnail
+        type: string
+        example: 'https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg'
+        description: 'Thumbnail of the song'
+        in: formData
+        required: true
+      - name: album
+        type: string
+        example: 'Hybrid Theory'
+        description: 'Album of the song'
+        in: formData
+        required: true
+      - name: file
+        type: string
+        example: 'https://s3-sa-east-1.amazonaws.com/gonative/1.mp3'
+        description: 'URL of the file of the song'
+        in: formData
+        required: true
+      - name: genre
+        type: string
+        example: 'Rock'
+        description: 'Genre of the song'
+        in: formData
+        required: true
+    responses:
+      201:
+        description: Song created
+        schema:
+          $ref: '#/definitions/Song'
+      400:
+        description: Invalid properties
+      401:
+        description: Not authenticated
+      403:
+        description: Not authorized
