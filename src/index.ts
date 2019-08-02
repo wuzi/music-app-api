@@ -16,7 +16,7 @@ mongoose.connect(<string>process.env.DATABASE, { useNewUrlParser: true }).then((
 });
 
 app.use(bodyParser());
-app.use(koaSwagger({ routePrefix: '/docs', swaggerOptions: { url: `http://localhost:${port}/swagger.json` } }));
+app.use(koaSwagger({ routePrefix: '/docs', swaggerOptions: { url: `/swagger.json` } }));
 routeLoader(app);
 
 app.listen(port, () => console.log(`Server started at http://localhost:${port}`));
