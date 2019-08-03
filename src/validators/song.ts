@@ -11,7 +11,7 @@ class SongValidator {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async store(ctx: BaseContext) {
+  static async store(ctx: BaseContext, next: any) {
     try {
       const rules = {
         name: 'required',
@@ -27,6 +27,7 @@ class SongValidator {
       };
 
       await validateAll(ctx.request.body, rules, messages);
+      await next();
     }
     catch (err) {
       ctx.status = 400;
