@@ -16,11 +16,12 @@ class PlaylistValidator {
       const rules = {
         title: 'required',
         description: 'required',
-        thumbnail: 'required',
+        thumbnail: 'required|url',
       };
 
       const messages = {
         required: (field: string) => `${field} é obrigatório`,
+        url: (field: string) => `${field} precisa ser um url válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
@@ -65,14 +66,15 @@ class PlaylistValidator {
       const rules = {
         name: 'required',
         author: 'required',
-        thumbnail: 'required',
+        thumbnail: 'required|url',
         album: 'required',
-        file: 'required',
+        file: 'required|url',
         genre: 'required',
       };
 
       const messages = {
         required: (field: string) => `${field} é obrigatório`,
+        url: (field: string) => `${field} precisa ser um url válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
