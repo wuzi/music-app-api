@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import routeLoader from './routes';
 import mongoose from 'mongoose';
 import logger from './utils/logger';
+import cors from '@koa/cors';
 dotenv.config();
 
 const app = new Koa();
@@ -16,6 +17,7 @@ mongoose.connect(<string>process.env.DATABASE, { useNewUrlParser: true }).then((
   logger('database', 'Could not connnect to database.', 'error');
 });
 
+app.use(cors());
 app.use(bodyParser());
 app.use(koaSwagger({ routePrefix: '/docs', swaggerOptions: { url: `/swagger.json` } }));
 routeLoader(app);
