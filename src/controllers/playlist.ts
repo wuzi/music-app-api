@@ -32,6 +32,23 @@ class PlaylistController {
   };
 
   /**
+   * Display a single playlist.
+   * GET v1/playlists/:id
+   *
+   * @param {BaseContext} ctx Koa Context
+   */
+  static async show(ctx: BaseContext) {
+    const playlist = await Playlist.findById(ctx.params.id);
+    if (!playlist) {
+      ctx.status = 404;
+      ctx.body = { message: 'Playlist not found' };
+      return;
+    }
+
+    ctx.body = playlist;
+  };
+
+  /**
    * Add a song to a playlist.
    * POST v1/playlists/:id/songs
    *

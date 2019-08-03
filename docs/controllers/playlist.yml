@@ -47,6 +47,25 @@
         description: Not authenticated
       403:
         description: Not authorized
+/playlists/{id}:
+  get:
+    tags:
+      - Playlist
+    summary: Display a single playlist
+    description: Display a single playlist
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        type: string
+        description: 'Id of the playlist'
+        in: path
+        required: true
+    responses:
+      200:
+        description: Return a single playlist
+        schema:
+          $ref: '#/definitions/Playlist'
 /playlists/{id}/songs:
   post:
     tags:

@@ -18,6 +18,12 @@ router.get('/', PlaylistController.index);
 router.post('/', PlaylistValidator.store, PlaylistController.store);
 
 /**
+ * Display a single playlist.
+ * GET v1/playlists/:id
+ */
+router.get('/:id', PlaylistValidator.show, PlaylistController.show);
+
+/**
  * Add a song to a playlist.
  * POST v1/playlists/:id/songs
  */

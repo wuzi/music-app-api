@@ -34,6 +34,21 @@ class PlaylistValidator {
   };
 
   /**
+   * Display a single playlist.
+   * POST v1/playlists/:id
+   *
+   * @param {BaseContext} ctx Koa Context
+   */
+  static async show(ctx: BaseContext, next: any) {
+    if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+      ctx.status = 404;
+      ctx.body = [{ message: 'Playlist not found' }];
+      return;
+    }
+    await next();
+  };
+
+  /**
    * Add a song to a playlist.
    * POST v1/playlists/:id/songs
    *
