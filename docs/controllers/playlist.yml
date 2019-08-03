@@ -104,4 +104,3 @@
         description: Not authorized
       404:
         description: Playlist not found
-
