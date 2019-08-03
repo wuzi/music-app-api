@@ -23,37 +23,31 @@
     parameters:
       - name: name
         type: string
-        example: 'Numb'
         description: 'Name of the song'
         in: formData
         required: true
       - name: author
         type: string
-        example: 'Linkin Park'
         description: 'Name of the author of the song'
         in: formData
         required: true
       - name: thumbnail
         type: string
-        example: 'https://s3-sa-east-1.amazonaws.com/gonative/linkin_park.jpg'
         description: 'Thumbnail of the song'
         in: formData
         required: true
       - name: album
         type: string
-        example: 'Hybrid Theory'
         description: 'Album of the song'
         in: formData
         required: true
       - name: file
         type: string
-        example: 'https://s3-sa-east-1.amazonaws.com/gonative/1.mp3'
         description: 'URL of the file of the song'
         in: formData
         required: true
       - name: genre
         type: string
-        example: 'Rock'
         description: 'Genre of the song'
         in: formData
         required: true
