@@ -6,15 +6,6 @@ import { validateAll } from 'indicative/validator';
  */
 class PlaylistValidator {
   /**
-   * Show a list of all playlists.
-   * GET v1/playlists
-   *
-   * @param {BaseContext} ctx Koa Context
-   */
-  static async index(ctx: BaseContext) {
-  };
-
-  /**
    * Create/save a new playlist.
    * POST v1/playlists
    *

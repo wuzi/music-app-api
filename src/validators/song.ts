@@ -6,15 +6,6 @@ import { validateAll } from 'indicative/validator';
  */
 class SongValidator {
   /**
-   * Show a list of all songs.
-   * GET v1/songs
-   *
-   * @param {BaseContext} ctx Koa Context
-   */
-  static async index(ctx: BaseContext) {
-  };
-
-  /**
    * Create/save a new song.
    * POST v1/songs
    *

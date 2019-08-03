@@ -9,7 +9,7 @@ router.prefix('/v1/songs');
  * Show a list of all songs.
  * GET v1/songs
  */
-router.get('/', SongValidator.index, SongController.index);
+router.get('/', SongController.index);
 
 /**
  * Create/save a new song.
