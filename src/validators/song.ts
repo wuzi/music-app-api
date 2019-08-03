@@ -11,7 +11,7 @@ class SongValidator {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async store(ctx: BaseContext, next: any) {
+  static async store(ctx: BaseContext, next: () => Promise<any>) {
     try {
       const rules = {
         name: 'required',

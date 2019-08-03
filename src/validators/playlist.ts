@@ -11,7 +11,7 @@ class PlaylistValidator {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async store(ctx: BaseContext, next: any) {
+  static async store(ctx: BaseContext, next: () => Promise<any>) {
     try {
       const rules = {
         title: 'required',
@@ -39,7 +39,7 @@ class PlaylistValidator {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async show(ctx: BaseContext, next: any) {
+  static async show(ctx: BaseContext, next: () => Promise<any>) {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = [{ message: 'Playlist not found' }];
@@ -54,7 +54,7 @@ class PlaylistValidator {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async addSong(ctx: BaseContext, next: any) {
+  static async addSong(ctx: BaseContext, next: () => Promise<any>) {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = [{ message: 'Playlist not found' }];
