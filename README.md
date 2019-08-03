@@ -15,8 +15,9 @@ npm start
 ## Built With
 
 * [nodejs](https://nodejs.org/en/) - JavaScript run-time environment
-* [Typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript
+* [typescript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript
 * [koa](https://koajs.com/) - Web framework
+* [mongoose](https://mongoosejs.com/) - MongoDB object modeling for node.js
 
 ## Versioning
 
