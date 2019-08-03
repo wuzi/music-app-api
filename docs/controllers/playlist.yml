@@ -47,3 +47,61 @@
         description: Not authenticated
       403:
         description: Not authorized
+/playlists/{id}/songs:
+  post:
+    tags:
+      - Playlist
+    summary: Create/save a new song to a playlist
+    description: Create/save a new song to a playlist
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        type: string
+        description: 'Id of the playlist'
+        in: path
+        required: true
+      - name: name
+        type: string
+        description: 'Name of the song'
+        in: formData
+        required: true
+      - name: author
+        type: string
+        description: 'Name of the author of the song'
+        in: formData
+        required: true
+      - name: thumbnail
+        type: string
+        description: 'Thumbnail of the song'
+        in: formData
+        required: true
+      - name: album
+        type: string
+        description: 'Album of the song'
+        in: formData
+        required: true
+      - name: file
+        type: string
+        description: 'URL of the file of the song'
+        in: formData
+        required: true
+      - name: genre
+        type: string
+        description: 'Genre of the song'
+        in: formData
+        required: true
+    responses:
+      201:
+        description: Song created
+        schema:
+          $ref: '#/definitions/Playlist'
+      400:
+        description: Invalid properties
+      401:
+        description: Not authenticated
+      403:
+        description: Not authorized
+      404:
+        description: Playlist not found
+
