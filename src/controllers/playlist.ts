@@ -66,6 +66,7 @@ class PlaylistController {
     playlist.songs.push(song)
     playlist.save();
 
+    ctx.status = 201;
     ctx.body = playlist;
   };
 }
