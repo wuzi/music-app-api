@@ -19,8 +19,8 @@ router.post('/', PlaylistValidator.store, PlaylistController.store);
 
 /**
  * Add a song to a playlist.
- * POST v1/playlists/:id/song
+ * POST v1/playlists/:id/songs
  */
-router.post('/:id/song', PlaylistValidator.addSong, PlaylistController.addSong);
+router.post('/:id/songs', PlaylistValidator.addSong, PlaylistController.addSong);
 
 export default router;

@@ -43,7 +43,7 @@ class PlaylistValidator {
 
   /**
    * Add a song to a playlist.
-   * POST v1/playlists/:id/song
+   * POST v1/playlists/:id/songs
    *
    * @param {BaseContext} ctx Koa Context
    */
