@@ -21,3 +21,9 @@ npm start
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning.
+
+## Live demo
+
+* [Front-end](https://spoticlone-ultimate.herokuapp.com)
+* [Documentation](https://music-api-005.herokuapp.com/docs)
+* [Front-end source](https://github.com/IgorSouzza/react-spotify-clone)
