@@ -85,5 +85,11 @@
         schema:
           allOf:
             - $ref: '#/definitions/User'
+            - type: object
+              properties:
+                playlists:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Playlist'
       401:
         description: Token inválido

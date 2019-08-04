@@ -55,7 +55,7 @@ class AuthController {
    * @param {BaseContext} ctx Koa Context
    */
   static async getAuthenticatedUser(ctx: BaseContext) {
-    const user = await User.findById(ctx.state.user._id);
+    const user = await User.findById(ctx.state.user._id).populate('playlists');
     ctx.body = user;
   };
 }

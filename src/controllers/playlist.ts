@@ -1,6 +1,7 @@
 import { BaseContext } from 'koa';
 import Playlist from '../models/playlist';
 import Song from '../models/song';
+import User from '../models/user';
 
 /**
  * Resourceful controller for interacting with playlists
@@ -24,8 +25,18 @@ class PlaylistController {
    * @param {BaseContext} ctx Koa Context
    */
   static async store(ctx: BaseContext) {
+    const user = await User.findById(ctx.state.user._id);
+    if (!user) {
+      ctx.body = 'Token inválido';
+      ctx.status = 401;
+      return;
+    }
+
     const playlist = new Playlist(ctx.request.body);
     await playlist.save();
+
+    user.playlists.push(playlist._id);
+    await user.save();
 
     ctx.status = 201;
     ctx.body = playlist;
