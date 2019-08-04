@@ -1,0 +1,21 @@
+definitions:
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+        example: 'José Bonifácio'
+        description: 'Name of the user'
+      email:
+        type: string
+        example: 'jose@gmail.com'
+        description: 'Email of the user'
+      password:
+        type: string
+        example: 'secret'
+        format: password
+        description: 'Password of the user'
+    required:
+      - name
+      - email
+      - password

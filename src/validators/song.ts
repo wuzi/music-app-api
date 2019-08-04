@@ -2,7 +2,7 @@ import { BaseContext } from 'koa';
 import { validateAll } from 'indicative/validator';
 
 /**
- * Resourceful controller for interacting with songs
+ * Resourceful validator for validating songs
  */
 class SongValidator {
   /**

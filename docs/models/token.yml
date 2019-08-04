@@ -1,0 +1,9 @@
+definitions:
+  Token:
+    type: object
+    properties:
+      token:
+        type: string
+        example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTUzMzY2MTY0Mn0.w_qI2tv8imANq_ys_ZKvLtrGItd7hrfRjifJoYSJzfo'
+    required:
+      - token

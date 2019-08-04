@@ -1,0 +1,71 @@
+/login:
+  post:
+    tags:
+      - Authentication
+    summary: Login to the application
+    description: Login to the application
+    produces:
+      - application/json
+    parameters:
+      - name: email
+        description: Email of the account
+        in: formData
+        required: true
+        type: string
+      - name: password
+        description: Password of the account
+        in: formData
+        required: true
+        type: string
+        format: password
+    responses:
+      200:
+        description: Login successful
+        schema:
+          allOf:
+            - $ref: '#/definitions/Token'
+            - type: object
+              properties:
+                user:
+                  $ref: '#/definitions/User'
+      400:
+        description: Usuário ou senha faltando
+      401:
+        description: Usuário não cadastrado
+/register:
+  post:
+    tags:
+      - Authentication
+    summary: Create a new account
+    description: Create a new account
+    produces:
+      - application/json
+    parameters:
+      - name: name
+        description: Name of the user
+        in: formData
+        required: true
+        type: string
+      - name: email
+        description: Email of the account
+        in: formData
+        required: true
+        type: string
+      - name: password
+        description: Password of the account
+        in: formData
+        required: true
+        type: string
+        format: password
+    responses:
+      200:
+        description: Account created
+        schema:
+          allOf:
+            - $ref: '#/definitions/Token'
+            - type: object
+              properties:
+                user:
+                  $ref: '#/definitions/User'
+      400:
+        description: Email já cadastrado ou propriedades faltando

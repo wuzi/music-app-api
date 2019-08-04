@@ -2,6 +2,8 @@
   get:
     tags:
       - Song
+    security:
+      - bearerAuth: []
     summary: Show a list of all songs
     description: Show a list of all songs
     produces:
@@ -16,6 +18,8 @@
   post:
     tags:
       - Song
+    security:
+      - bearerAuth: []
     summary: Create/save a new song
     description: Create/save a new song
     produces:

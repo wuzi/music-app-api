@@ -2,6 +2,8 @@
   get:
     tags:
       - Playlist
+    security:
+      - bearerAuth: []
     summary: Show a list of all playlists
     description: Show a list of all playlists
     produces:
@@ -16,6 +18,8 @@
   post:
     tags:
       - Playlist
+    security:
+      - bearerAuth: []
     summary: Create/save a new playlist
     description: Create/save a new playlist
     produces:
@@ -51,6 +55,8 @@
   get:
     tags:
       - Playlist
+    security:
+      - bearerAuth: []
     summary: Display a single playlist
     description: Display a single playlist
     produces:
@@ -70,6 +76,8 @@
   post:
     tags:
       - Playlist
+    security:
+      - bearerAuth: []
     summary: Create/save a new song to a playlist
     description: Create/save a new song to a playlist
     produces:
