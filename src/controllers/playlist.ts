@@ -32,7 +32,7 @@ class PlaylistController {
       return;
     }
 
-    const playlist = new Playlist(ctx.request.body);
+    const playlist = new Playlist({ ...ctx.request.body, author: user._id });
     await playlist.save();
 
     user.playlists.push(playlist._id);
@@ -49,7 +49,7 @@ class PlaylistController {
    * @param {BaseContext} ctx Koa Context
    */
   static async show(ctx: BaseContext) {
-    const playlist = await Playlist.findById(ctx.params.id);
+    const playlist = await Playlist.findById(ctx.params.id).populate('author');
     if (!playlist) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist not found' };
