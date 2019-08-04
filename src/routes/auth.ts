@@ -17,4 +17,10 @@ router.post('/login', AuthValidator.login, AuthController.login);
  */
 router.post('/register', AuthValidator.register, AuthController.register);
 
+/**
+ * Get the authenciated user.
+ * GET v1/user
+ */
+router.get('/user', AuthController.getAuthenticatedUser);
+
 export default router;

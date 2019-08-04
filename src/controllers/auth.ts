@@ -29,7 +29,7 @@ class AuthController {
       return;
     }
 
-    const token = jwt.sign({ email }, <string>process.env.SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ email, _id: user._id }, <string>process.env.SECRET, { expiresIn: '24h' });
     ctx.body = { token, user };
   };
 
@@ -43,9 +43,20 @@ class AuthController {
     const { name, email, password } = ctx.request.body;
 
     const user = await User.create({ name, email, password });
-    const token = jwt.sign({ email }, <string>process.env.SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ email, _id: user._id }, <string>process.env.SECRET, { expiresIn: '24h' });
 
     ctx.body = { token, user };
+  };
+
+  /**
+   * Get the authenciated user.
+   * POST v1/user
+   *
+   * @param {BaseContext} ctx Koa Context
+   */
+  static async getAuthenticatedUser(ctx: BaseContext) {
+    const user = await User.findById(ctx.state.user._id);
+    ctx.body = user;
   };
 }
 

@@ -69,3 +69,21 @@
                   $ref: '#/definitions/User'
       400:
         description: Email já cadastrado ou propriedades faltando
+/user:
+  get:
+    tags:
+      - Authentication
+    security:
+      - bearerAuth: []
+    summary: Get the authenticated user
+    description: Get the authenticated user
+    produces:
+      - application/json
+    responses:
+      200:
+        description: Account of the authenticated user
+        schema:
+          allOf:
+            - $ref: '#/definitions/User'
+      401:
+        description: Token inválido
