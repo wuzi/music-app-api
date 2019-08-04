@@ -1,0 +1,28 @@
+/users/{id}:
+  get:
+    tags:
+      - User
+    security:
+      - bearerAuth: []
+    summary: Display a single user
+    description: Display a single user
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        type: string
+        description: 'Id of the user'
+        in: path
+        required: true
+    responses:
+      200:
+        description: Return a single user
+        schema:
+          allOf:
+            - $ref: '#/definitions/User'
+            - type: object
+              properties:
+                playlists:
+                  type: array
+                  items:
+                    $ref: '#/definitions/Playlist'
