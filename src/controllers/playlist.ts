@@ -27,7 +27,7 @@ class PlaylistController {
   static async store(ctx: BaseContext) {
     const user = await User.findById(ctx.state.user._id);
     if (!user) {
-      ctx.body = 'Token inválido';
+      ctx.body = { message: 'Token inválido' };
       ctx.status = 401;
       return;
     }
@@ -52,7 +52,7 @@ class PlaylistController {
     const playlist = await Playlist.findById(ctx.params.id).populate('author');
     if (!playlist) {
       ctx.status = 404;
-      ctx.body = { message: 'Playlist not found' };
+      ctx.body = { message: 'Playlist não encontrada' };
       return;
     }
 
@@ -69,7 +69,7 @@ class PlaylistController {
     const playlist = await Playlist.findById(ctx.params.id);
     if (!playlist) {
       ctx.status = 404;
-      ctx.body = { message: 'Playlist not found' };
+      ctx.body = { message: 'Playlist não encontrada' };
       return;
     }
 

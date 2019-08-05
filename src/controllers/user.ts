@@ -15,7 +15,7 @@ class UserController {
     const user = await User.findById(ctx.params.id).populate('playlists');
     if (!user) {
       ctx.status = 404;
-      ctx.body = { message: 'User not found' };
+      ctx.body = { message: 'Usuário não encontrado' };
       return;
     }
 

@@ -42,7 +42,7 @@ class PlaylistValidator {
   static async show(ctx: BaseContext, next: () => Promise<any>) {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
-      ctx.body = [{ message: 'Playlist not found' }];
+      ctx.body = { message: 'Playlist não encontrada' };
       return;
     }
     await next();
@@ -57,7 +57,7 @@ class PlaylistValidator {
   static async addSong(ctx: BaseContext, next: () => Promise<any>) {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
-      ctx.body = [{ message: 'Playlist not found' }];
+      ctx.body = { message: 'Playlist não encontrada' };
       return;
     }
 
