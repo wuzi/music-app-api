@@ -33,7 +33,6 @@ class SongValidator {
     catch (err) {
       ctx.status = 400;
       ctx.body = err;
-      return;
     }
   };
 }

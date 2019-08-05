@@ -30,7 +30,6 @@ class AuthValidator {
     catch (err) {
       ctx.status = 400;
       ctx.body = err;
-      return;
     }
   };
 

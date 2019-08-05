@@ -30,7 +30,6 @@ class PlaylistValidator {
     catch (err) {
       ctx.status = 400;
       ctx.body = err;
-      return;
     }
   };
 
@@ -83,7 +82,6 @@ class PlaylistValidator {
     catch (err) {
       ctx.status = 400;
       ctx.body = err;
-      return;
     }
   };
 }
