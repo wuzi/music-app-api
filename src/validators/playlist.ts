@@ -84,6 +84,28 @@ class PlaylistValidator {
       ctx.body = err;
     }
   };
+
+  /**
+   * Remove a song from a playlist.
+   * DELETE v1/playlists/:id/songs/:sid
+   *
+   * @param {BaseContext} ctx Koa Context
+   */
+  static async removeSong(ctx: BaseContext, next: () => Promise<any>) {
+    if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+      ctx.status = 404;
+      ctx.body = { message: 'Playlist não encontrada' };
+      return;
+    }
+
+    if (!ctx.params.sid.match(/^[0-9a-fA-F]{24}$/)) {
+      ctx.status = 404;
+      ctx.body = { message: 'Song não encontrado' };
+      return;
+    }
+
+    await next();
+  };
 }
 
 export default PlaylistValidator;

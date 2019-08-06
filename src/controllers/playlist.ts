@@ -80,6 +80,34 @@ class PlaylistController {
     ctx.status = 201;
     ctx.body = playlist;
   };
+
+  /**
+   * Remove a song from a playlist.
+   * DELETE v1/playlists/:id/songs/:sid
+   *
+   * @param {BaseContext} ctx Koa Context
+   */
+  static async removeSong(ctx: BaseContext) {
+    const playlist = await Playlist.findById(ctx.params.id);
+    if (!playlist) {
+      ctx.status = 404;
+      ctx.body = { message: 'Playlist não encontrada' };
+      return;
+    }
+
+    const songIndex = playlist.songs.findIndex((s) => { return s._id == ctx.params.sid });
+    if (songIndex == -1) {
+      ctx.status = 404;
+      ctx.body = { message: 'Song não encontrado' };
+      return;
+    }
+
+    playlist.songs.splice(songIndex, 1);
+    playlist.save();
+
+    ctx.status = 200;
+    ctx.body = playlist;
+  };
 }
 
 export default PlaylistController;

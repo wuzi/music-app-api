@@ -29,4 +29,10 @@ router.get('/:id', PlaylistValidator.show, PlaylistController.show);
  */
 router.post('/:id/songs', PlaylistValidator.addSong, PlaylistController.addSong);
 
+/**
+ * Remove a song from a playlist.
+ * DELETE v1/playlists/:id/songs/:sid
+ */
+router.post('/:id/songs/:sid', PlaylistValidator.removeSong, PlaylistController.removeSong);
+
 export default router;

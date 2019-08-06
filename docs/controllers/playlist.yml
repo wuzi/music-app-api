@@ -131,3 +131,35 @@
         description: Not authorized
       404:
         description: Playlist not found
+/playlists/{id}/songs/{sid}:
+  delete:
+    tags:
+      - Playlist
+    security:
+      - bearerAuth: []
+    summary: Remove a song from a playlist
+    description: Remove a song from a playlist
+    produces:
+      - application/json
+    parameters:
+      - name: id
+        type: string
+        description: 'Id of the playlist'
+        in: path
+        required: true
+      - name: sid
+        type: string
+        description: 'Id of the song'
+        in: path
+        required: true
+    responses:
+      200:
+        description: Song removed
+        schema:
+          $ref: '#/definitions/Playlist'
+      401:
+        description: Not authenticated
+      403:
+        description: Not authorized
+      404:
+        description: Playlist or song not found
