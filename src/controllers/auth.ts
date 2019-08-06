@@ -16,7 +16,7 @@ class AuthController {
   static async login(ctx: BaseContext) {
     const { email, password } = ctx.request.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select('+password');
     if (!user) {
       ctx.status = 401;
       ctx.body = { message: 'Email não cadastrado' };
@@ -30,7 +30,11 @@ class AuthController {
     }
 
     const token = jwt.sign({ email, _id: user._id }, <string>process.env.SECRET, { expiresIn: '24h' });
-    ctx.body = { token, user };
+
+    const userObj = user.toObject();
+    delete userObj.password;
+
+    ctx.body = { token, user: userObj };
   };
 
   /**
@@ -45,7 +49,10 @@ class AuthController {
     const user = await User.create({ name, email, password });
     const token = jwt.sign({ email, _id: user._id }, <string>process.env.SECRET, { expiresIn: '24h' });
 
-    ctx.body = { token, user };
+    const userObj = user.toObject();
+    delete userObj.password;
+
+    ctx.body = { token, user: userObj };
   };
 
   /**
