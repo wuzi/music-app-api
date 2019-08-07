@@ -7,7 +7,13 @@
     "build": "tsc",
     "start": "tsc && npm run serve",
     "serve": "node dist/index.js",
-    "watch": "nodemon dist/index.js"
+    "watch": "nodemon dist/index.js",
+    "lint": "eslint src/**/*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && eslint --fix src/**/*"
+    }
   },
   "dependencies": {
     "@koa/cors": "^2.2.3",
@@ -39,6 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "eslint": "^6.1.0",
+    "husky": "^3.0.2",
     "nodemon": "^1.19.1"
   }
 }

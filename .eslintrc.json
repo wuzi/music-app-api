@@ -34,9 +34,10 @@
       "error",
       "single"
     ],
-    "semi": [
-      "error",
-      "always"
-    ]
+    "semi": "off",
+    "@typescript-eslint/semi": [
+      "error"
+    ],
+    "require-atomic-updates": "off"
   }
 }
