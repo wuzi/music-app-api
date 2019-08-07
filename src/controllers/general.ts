@@ -12,9 +12,9 @@ class GeneralController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async swagger(ctx: BaseContext) {
+  public static async swagger(ctx: BaseContext): Promise<void> {
     ctx.body = swaggerJSDoc(swaggerConfig);
-  };
+  }
 }
 
 export default GeneralController;

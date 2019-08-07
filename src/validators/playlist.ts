@@ -10,8 +10,9 @@ class PlaylistValidator {
    * POST v1/playlists
    *
    * @param {BaseContext} ctx Koa Context
+   * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  static async store(ctx: BaseContext, next: () => Promise<any>) {
+  public static async store(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         title: 'required',
@@ -20,8 +21,8 @@ class PlaylistValidator {
       };
 
       const messages = {
-        required: (field: string) => `${field} é obrigatório`,
-        url: (field: string) => `${field} precisa ser um url válido`,
+        required: (field: string): string => `${field} é obrigatório`,
+        url: (field: string): string => `${field} precisa ser um url válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
@@ -31,30 +32,32 @@ class PlaylistValidator {
       ctx.status = 400;
       ctx.body = err;
     }
-  };
+  }
 
   /**
    * Display a single playlist.
    * POST v1/playlists/:id
    *
    * @param {BaseContext} ctx Koa Context
+   * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  static async show(ctx: BaseContext, next: () => Promise<any>) {
+  public static async show(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist não encontrada' };
       return;
     }
     await next();
-  };
+  }
 
   /**
    * Add a song to a playlist.
    * POST v1/playlists/:id/songs
    *
    * @param {BaseContext} ctx Koa Context
+   * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  static async addSong(ctx: BaseContext, next: () => Promise<any>) {
+  public static async addSong(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist não encontrada' };
@@ -72,8 +75,8 @@ class PlaylistValidator {
       };
 
       const messages = {
-        required: (field: string) => `${field} é obrigatório`,
-        url: (field: string) => `${field} precisa ser um url válido`,
+        required: (field: string): string => `${field} é obrigatório`,
+        url: (field: string): string => `${field} precisa ser um url válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
@@ -83,15 +86,16 @@ class PlaylistValidator {
       ctx.status = 400;
       ctx.body = err;
     }
-  };
+  }
 
   /**
    * Remove a song from a playlist.
    * DELETE v1/playlists/:id/songs/:sid
    *
    * @param {BaseContext} ctx Koa Context
+   * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  static async removeSong(ctx: BaseContext, next: () => Promise<any>) {
+  public static async removeSong(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist não encontrada' };
@@ -105,7 +109,7 @@ class PlaylistValidator {
     }
 
     await next();
-  };
+  }
 }
 
 export default PlaylistValidator;

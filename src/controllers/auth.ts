@@ -13,7 +13,7 @@ class AuthController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async login(ctx: BaseContext) {
+  public static async login(ctx: BaseContext): Promise<void> {
     const { email, password } = ctx.request.body;
 
     const user = await User.findOne({ email }).select('+password');
@@ -29,13 +29,13 @@ class AuthController {
       return;
     }
 
-    const token = jwt.sign({ email, _id: user._id }, <string>process.env.SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ email, _id: user._id }, process.env.SECRET as string, { expiresIn: '24h' });
 
     const userObj = user.toObject();
     delete userObj.password;
 
     ctx.body = { token, user: userObj };
-  };
+  }
 
   /**
    * Register a new user.
@@ -43,17 +43,17 @@ class AuthController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async register(ctx: BaseContext) {
+  public static async register(ctx: BaseContext): Promise<void> {
     const { name, email, password } = ctx.request.body;
 
     const user = await User.create({ name, email, password });
-    const token = jwt.sign({ email, _id: user._id }, <string>process.env.SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ email, _id: user._id }, process.env.SECRET as string, { expiresIn: '24h' });
 
     const userObj = user.toObject();
     delete userObj.password;
 
     ctx.body = { token, user: userObj };
-  };
+  }
 
   /**
    * Get the authenciated user.
@@ -61,10 +61,10 @@ class AuthController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async getAuthenticatedUser(ctx: BaseContext) {
+  public static async getAuthenticatedUser(ctx: BaseContext): Promise<void> {
     const user = await User.findById(ctx.state.user._id).populate('playlists');
     ctx.body = user;
-  };
+  }
 }
 
 export default AuthController;

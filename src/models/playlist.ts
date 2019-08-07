@@ -1,14 +1,14 @@
 import mongoose from 'mongoose';
-import { ISong } from './song';
-import { IUser } from './user';
+import { Song } from './song';
+import { User } from './user';
 
-export interface IPlaylist extends mongoose.Document {
-  author: IUser;
+export interface Playlist extends mongoose.Document {
+  author: User;
   title: string;
   description: string;
   thumbnail: string;
-  songs: ISong[];
-};
+  songs: Song[];
+}
 
 export const PlaylistSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
@@ -18,5 +18,5 @@ export const PlaylistSchema = new mongoose.Schema({
   songs: { type: Array, required: false },
 });
 
-const Playlist = mongoose.model<IPlaylist>('Playlist', PlaylistSchema);
+const Playlist = mongoose.model<Playlist>('Playlist', PlaylistSchema);
 export default Playlist;

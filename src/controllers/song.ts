@@ -11,10 +11,10 @@ class SongController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async index(ctx: BaseContext) {
+  public static async index(ctx: BaseContext): Promise<void> {
     const songs = await Song.find();
     ctx.body = songs;
-  };
+  }
 
   /**
    * Create/save a new song.
@@ -22,13 +22,13 @@ class SongController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async store(ctx: BaseContext) {
+  public static async store(ctx: BaseContext): Promise<void> {
     const song = new Song(ctx.request.body);
     await song.save();
 
     ctx.status = 201;
     ctx.body = song;
-  };
+  }
 }
 
 export default SongController;

@@ -11,7 +11,7 @@ class SongValidator {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async store(ctx: BaseContext, next: () => Promise<any>) {
+  public static async store(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         name: 'required',
@@ -23,8 +23,8 @@ class SongValidator {
       };
 
       const messages = {
-        required: (field: string) => `${field} é obrigatório`,
-        url: (field: string) => `${field} precisa ser um url válido`,
+        required: (field: string): string => `${field} é obrigatório`,
+        url: (field: string): string => `${field} precisa ser um url válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
@@ -34,7 +34,7 @@ class SongValidator {
       ctx.status = 400;
       ctx.body = err;
     }
-  };
+  }
 }
 
 export default SongValidator;

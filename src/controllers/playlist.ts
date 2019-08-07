@@ -13,10 +13,10 @@ class PlaylistController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async index(ctx: BaseContext) {
+  public static async index(ctx: BaseContext): Promise<void> {
     const playlists = await Playlist.find();
     ctx.body = playlists;
-  };
+  }
 
   /**
    * Create/save a new playlist.
@@ -24,7 +24,7 @@ class PlaylistController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async store(ctx: BaseContext) {
+  public static async store(ctx: BaseContext): Promise<void> {
     const user = await User.findById(ctx.state.user._id);
     if (!user) {
       ctx.body = { message: 'Token inválido' };
@@ -40,7 +40,7 @@ class PlaylistController {
 
     ctx.status = 201;
     ctx.body = playlist;
-  };
+  }
 
   /**
    * Display a single playlist.
@@ -48,7 +48,7 @@ class PlaylistController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async show(ctx: BaseContext) {
+  public static async show(ctx: BaseContext): Promise<void> {
     const playlist = await Playlist.findById(ctx.params.id).populate('author');
     if (!playlist) {
       ctx.status = 404;
@@ -57,7 +57,7 @@ class PlaylistController {
     }
 
     ctx.body = playlist;
-  };
+  }
 
   /**
    * Add a song to a playlist.
@@ -65,7 +65,7 @@ class PlaylistController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async addSong(ctx: BaseContext) {
+  public static async addSong(ctx: BaseContext): Promise<void> {
     const playlist = await Playlist.findById(ctx.params.id);
     if (!playlist) {
       ctx.status = 404;
@@ -74,12 +74,12 @@ class PlaylistController {
     }
 
     const song = new Song(ctx.request.body);
-    playlist.songs.push(song)
+    playlist.songs.push(song);
     playlist.save();
 
     ctx.status = 201;
     ctx.body = playlist;
-  };
+  }
 
   /**
    * Remove a song from a playlist.
@@ -87,7 +87,7 @@ class PlaylistController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async removeSong(ctx: BaseContext) {
+  public static async removeSong(ctx: BaseContext): Promise<void> {
     const playlist = await Playlist.findById(ctx.params.id);
     if (!playlist) {
       ctx.status = 404;
@@ -95,7 +95,7 @@ class PlaylistController {
       return;
     }
 
-    const songIndex = playlist.songs.findIndex((s) => { return s._id == ctx.params.sid });
+    const songIndex = playlist.songs.findIndex((s): boolean => { return s._id == ctx.params.sid; });
     if (songIndex == -1) {
       ctx.status = 404;
       ctx.body = { message: 'Song não encontrado' };
@@ -107,7 +107,7 @@ class PlaylistController {
 
     ctx.status = 200;
     ctx.body = playlist;
-  };
+  }
 }
 
 export default PlaylistController;

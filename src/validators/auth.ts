@@ -11,8 +11,9 @@ class AuthValidator {
    * POST v1/login
    *
    * @param {BaseContext} ctx Koa Context
+   * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  static async login(ctx: BaseContext, next: () => Promise<any>) {
+  public static async login(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         email: 'required|email',
@@ -20,8 +21,8 @@ class AuthValidator {
       };
 
       const messages = {
-        required: (field: string) => `${field} é obrigatório`,
-        email: (field: string) => `${field} deve ser um email válido`,
+        required: (field: string): string => `${field} é obrigatório`,
+        email: (field: string): string => `${field} deve ser um email válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
@@ -31,15 +32,16 @@ class AuthValidator {
       ctx.status = 400;
       ctx.body = err;
     }
-  };
+  }
 
   /**
    * Register a new user.
    * POST v1/register
    *
    * @param {BaseContext} ctx Koa Context
+   * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  static async register(ctx: BaseContext, next: () => Promise<any>) {
+  public static async register(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         name: 'required',
@@ -48,8 +50,8 @@ class AuthValidator {
       };
 
       const messages = {
-        required: (field: string) => `${field} é obrigatório`,
-        email: (field: string) => `${field} deve ser um email válido`,
+        required: (field: string): string => `${field} é obrigatório`,
+        email: (field: string): string => `${field} deve ser um email válido`,
       };
 
       await validateAll(ctx.request.body, rules, messages);
@@ -65,9 +67,8 @@ class AuthValidator {
     catch (err) {
       ctx.status = 400;
       ctx.body = err;
-      return;
     }
-  };  
+  }  
 }
 
 export default AuthValidator;

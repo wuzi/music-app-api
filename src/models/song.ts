@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
-export interface ISong extends mongoose.Document {
+export interface Song extends mongoose.Document {
   name: string;
   author: string;
   thumbnail: string;
   album: string;
   file: string;
   genre: string;
-};
+}
 
 export const SongSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -18,5 +18,5 @@ export const SongSchema = new mongoose.Schema({
   genre: { type: String, required: true },
 });
 
-const Song = mongoose.model<ISong>('Song', SongSchema);
+const Song = mongoose.model<Song>('Song', SongSchema);
 export default Song;

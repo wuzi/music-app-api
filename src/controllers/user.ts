@@ -11,7 +11,7 @@ class UserController {
    *
    * @param {BaseContext} ctx Koa Context
    */
-  static async show(ctx: BaseContext) {
+  public static async show(ctx: BaseContext): Promise<void> {
     const user = await User.findById(ctx.params.id).populate('playlists');
     if (!user) {
       ctx.status = 404;
@@ -20,7 +20,7 @@ class UserController {
     }
 
     ctx.body = user;
-  };
+  }
 }
 
 export default UserController;
