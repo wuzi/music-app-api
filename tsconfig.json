@@ -10,7 +10,7 @@
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "outDir": "dist",
-    "lib": ["es7", "dom"],
+    "lib": ["es7", "dom"]
   },
   "include": [
     "src/**/*"
