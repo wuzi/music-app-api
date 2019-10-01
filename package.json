@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && eslint --fix src/**/*"
+      "pre-commit": "tsc --noEmit && eslint --fix src/**/* && jest"
     }
   },
   "dependencies": {
@@ -30,6 +30,7 @@
     "@types/sinon": "^7.0.13",
     "@types/swagger-jsdoc": "^3.0.1",
     "@types/validator": "^10.11.2",
+    "mongodb-memory-server": "^5.2.6",
     "bcrypt": "^3.0.6",
     "dotenv": "^8.0.0",
     "indicative": "^7.2.0",
@@ -51,7 +52,6 @@
     "eslint-utils": "^1.4.2",
     "husky": "^3.0.2",
     "jest": "^24.8.0",
-    "mongodb-memory-server": "^5.2.6",
     "nodemon": "^1.19.1",
     "sinon": "^7.4.1",
     "ts-jest": "^24.0.2"
