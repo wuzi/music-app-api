@@ -18,7 +18,7 @@ export default {
       bearerAuth: {
         type: 'apiKey',
         in: 'header',
-        name: 'Authorization'
+        name: 'Authorization',
       },
     },
   },
@@ -27,11 +27,11 @@ export default {
     bearerAuth: {
       type: 'http',
       scheme: 'bearer',
-      bearerFormat: 'JWT'
-    }
+      bearerFormat: 'JWT',
+    },
   },
 
   apis: [
-    'docs/**/*.yml'
+    'docs/**/*.yml',
   ],
 };

@@ -42,7 +42,7 @@ describe('playlists', (): void => {
   it('should return a single playlist', async (): Promise<void> => {
     const ctx: any = {
       params: {
-        id: '507f1f77bcf86cd799439011'
+        id: '507f1f77bcf86cd799439011',
       },
     };
 

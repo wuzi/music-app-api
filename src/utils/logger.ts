@@ -7,9 +7,9 @@ import log4js from 'log4js';
 log4js.configure({
   appenders: {
     file: { type: 'file', layout: { type: 'basic' }, filename: 'logs/app.log' },
-    console: { type: 'console' }
+    console: { type: 'console' },
   },
-  categories: { default: { appenders: ['file', 'console'], level: 'info' } }
+  categories: { default: { appenders: ['file', 'console'], level: 'info' } },
 });
 
 /**

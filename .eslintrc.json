@@ -39,6 +39,10 @@
     "@typescript-eslint/semi": [
       "error"
     ],
-    "require-atomic-updates": "off"
+    "require-atomic-updates": "off",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ]
   }
 }
