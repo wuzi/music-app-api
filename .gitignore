@@ -4,6 +4,9 @@ node_modules
 # compiled files
 dist/
 
+# tests
+coverage/
+
 # log files
 logs/
 

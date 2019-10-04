@@ -8,7 +8,7 @@
     "start": "tsc && npm run serve",
     "serve": "node dist/index.js",
     "watch": "nodemon dist/index.js",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "eslint src/**/*"
   },
   "husky": {
