@@ -23,8 +23,7 @@ class SongController {
    * @param {BaseContext} ctx Koa Context
    */
   public static async store(ctx: BaseContext): Promise<void> {
-    const song = new Song(ctx.request.body);
-    await song.save();
+    const song = await Song.create(ctx.request.body);
 
     ctx.status = 201;
     ctx.body = song;
