@@ -12,3 +12,6 @@ logs/
 
 # environment variables, never commit this file
 .env
+
+# mongo data
+data/
