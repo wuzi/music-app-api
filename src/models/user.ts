@@ -16,6 +16,7 @@ export const UserSchema = new mongoose.Schema({
   playlists: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Playlist' }],
 });
 
+/* istanbul ignore next */
 UserSchema.pre('save', function (this: User): void {
   this.password = bcrypt.hashSync(this.password, 10);
 });
