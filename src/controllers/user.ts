@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import User from '../models/user';
 
 /**
@@ -9,9 +9,9 @@ class UserController {
    * Display a single user.
    * GET v1/users/:id
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async show(ctx: BaseContext): Promise<void> {
+  public static async show(ctx: Context): Promise<void> {
     const user = await User.findById(ctx.params.id).populate('playlists');
     if (!user) {
       ctx.status = 404;

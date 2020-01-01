@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import { validateAll } from 'indicative/validator';
 import User from '../models/user';
 
@@ -10,10 +10,10 @@ class AuthValidator {
    * Authenticate an user.
    * POST v1/login
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  public static async login(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async login(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         email: 'required|email',
@@ -38,10 +38,10 @@ class AuthValidator {
    * Register a new user.
    * POST v1/register
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  public static async register(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async register(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         name: 'required',

@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import { validateAll } from 'indicative/validator';
 
 /**
@@ -9,9 +9,9 @@ class SongValidator {
    * Create/save a new song.
    * POST v1/songs
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async store(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async store(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         name: 'required',

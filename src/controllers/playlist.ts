@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import Playlist from '../models/playlist';
 import Song from '../models/song';
 import User from '../models/user';
@@ -11,9 +11,9 @@ class PlaylistController {
    * Show a list of all playlists.
    * GET v1/playlists
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async index(ctx: BaseContext): Promise<void> {
+  public static async index(ctx: Context): Promise<void> {
     const playlists = await Playlist.find();
     ctx.body = playlists;
   }
@@ -22,9 +22,9 @@ class PlaylistController {
    * Create/save a new playlist.
    * POST v1/playlists
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async store(ctx: BaseContext): Promise<void> {
+  public static async store(ctx: Context): Promise<void> {
     const user = await User.findById(ctx.state.user._id);
     if (!user) {
       ctx.body = { message: 'Token inválido' };
@@ -46,9 +46,9 @@ class PlaylistController {
    * Display a single playlist.
    * GET v1/playlists/:id
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async show(ctx: BaseContext): Promise<void> {
+  public static async show(ctx: Context): Promise<void> {
     const playlist = await Playlist.findById(ctx.params.id).populate('author');
     if (!playlist) {
       ctx.status = 404;
@@ -63,9 +63,9 @@ class PlaylistController {
    * Add a song to a playlist.
    * POST v1/playlists/:id/songs
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async addSong(ctx: BaseContext): Promise<void> {
+  public static async addSong(ctx: Context): Promise<void> {
     const playlist = await Playlist.findById(ctx.params.id);
     if (!playlist) {
       ctx.status = 404;
@@ -85,9 +85,9 @@ class PlaylistController {
    * Remove a song from a playlist.
    * DELETE v1/playlists/:id/songs/:sid
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async removeSong(ctx: BaseContext): Promise<void> {
+  public static async removeSong(ctx: Context): Promise<void> {
     const playlist = await Playlist.findById(ctx.params.id);
     if (!playlist) {
       ctx.status = 404;

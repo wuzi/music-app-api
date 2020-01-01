@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import Song from '../models/song';
 
 /**
@@ -9,9 +9,9 @@ class SongController {
    * Show a list of all songs.
    * GET v1/songs
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async index(ctx: BaseContext): Promise<void> {
+  public static async index(ctx: Context): Promise<void> {
     const songs = await Song.find();
     ctx.body = songs;
   }
@@ -20,9 +20,9 @@ class SongController {
    * Create/save a new song.
    * POST v1/songs
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async store(ctx: BaseContext): Promise<void> {
+  public static async store(ctx: Context): Promise<void> {
     const song = await Song.create(ctx.request.body);
 
     ctx.status = 201;

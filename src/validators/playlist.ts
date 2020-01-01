@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import { validateAll } from 'indicative/validator';
 
 /**
@@ -9,10 +9,10 @@ class PlaylistValidator {
    * Create/save a new playlist.
    * POST v1/playlists
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  public static async store(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async store(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     try {
       const rules = {
         title: 'required',
@@ -38,10 +38,10 @@ class PlaylistValidator {
    * Display a single playlist.
    * POST v1/playlists/:id
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  public static async show(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async show(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist não encontrada' };
@@ -54,10 +54,10 @@ class PlaylistValidator {
    * Add a song to a playlist.
    * POST v1/playlists/:id/songs
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  public static async addSong(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async addSong(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist não encontrada' };
@@ -92,10 +92,10 @@ class PlaylistValidator {
    * Remove a song from a playlist.
    * DELETE v1/playlists/:id/songs/:sid
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    * @param {Promise<unknown>} next Call if it should pass to the next middleware
    */
-  public static async removeSong(ctx: BaseContext, next: () => Promise<unknown>): Promise<void> {
+  public static async removeSong(ctx: Context, next: () => Promise<unknown>): Promise<void> {
     if (!ctx.params.id.match(/^[0-9a-fA-F]{24}$/)) {
       ctx.status = 404;
       ctx.body = { message: 'Playlist não encontrada' };

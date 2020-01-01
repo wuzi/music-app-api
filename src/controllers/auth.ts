@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import User from '../models/user';
 
 /**
@@ -11,9 +11,9 @@ class AuthController {
    * Authenticate an user.
    * POST v1/login
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async login(ctx: BaseContext): Promise<void> {
+  public static async login(ctx: Context): Promise<void> {
     const { email, password } = ctx.request.body;
 
     const user = await User.findOne({ email }).select('+password');
@@ -41,9 +41,9 @@ class AuthController {
    * Register a new user.
    * POST v1/register
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async register(ctx: BaseContext): Promise<void> {
+  public static async register(ctx: Context): Promise<void> {
     const { name, email, password } = ctx.request.body;
 
     const user = await User.create({ name, email, password });
@@ -59,9 +59,9 @@ class AuthController {
    * Get the authenciated user.
    * POST v1/user
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async getAuthenticatedUser(ctx: BaseContext): Promise<void> {
+  public static async getAuthenticatedUser(ctx: Context): Promise<void> {
     const user = await User.findById(ctx.state.user._id).populate('playlists');
     ctx.body = user;
   }

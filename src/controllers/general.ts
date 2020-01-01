@@ -1,4 +1,4 @@
-import { BaseContext } from 'koa';
+import { Context } from 'koa';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerConfig from '../config/swagger';
 
@@ -10,9 +10,9 @@ class GeneralController {
    * Show a list of all playlists.
    * GET v1/playlists
    *
-   * @param {BaseContext} ctx Koa Context
+   * @param {Context} ctx Koa Context
    */
-  public static async swagger(ctx: BaseContext): Promise<void> {
+  public static async swagger(ctx: Context): Promise<void> {
     ctx.body = swaggerJSDoc(swaggerConfig);
   }
 }

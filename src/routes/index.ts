@@ -5,7 +5,7 @@ import user from './user';
 import general from './general';
 import playlist from './playlist';
 
-const routeLoader = (app: Koa<unknown, {}>): void => {
+const routeLoader = (app: Koa<Koa.DefaultState, Koa.DefaultContext>): void => {
   app.use(auth.routes());
   app.use(song.routes());
   app.use(user.routes());
