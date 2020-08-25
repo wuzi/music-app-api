@@ -16,7 +16,7 @@
     }
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.0.0",
     "indicative": "^7.4.4",
     "jsonwebtoken": "^8.5.1",
